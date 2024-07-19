@@ -1,0 +1,176 @@
+import java.util.*;
+
+interface Mystack
+
+{
+
+  void push();
+  
+  void pop();
+  
+  void display();
+
+}
+
+class StackArray implements Mystack
+
+{
+
+  final int SIZE=5;
+  
+  int stack[]=new int[SIZE];
+  
+  int top=-1;
+  
+  int x;
+  
+  int i;
+  
+  Scanner sc=new Scanner(System.in);
+  
+  public void push()
+  
+  {
+  
+    System.out.println("\nEnter the element:");
+    
+    x=sc.nextInt();
+    
+    try
+    
+    {
+    
+      top=top+1;
+      
+      stack[top]=x;
+    
+    }
+    
+    catch(ArrayIndexOutOfBoundsException e)
+    
+    {
+    
+      System.out.println("\nStack is full!"+e);
+      
+      top=top-1;
+    
+    }
+    
+  }
+    
+    public void pop()
+    
+    {
+    
+      try
+      
+      {
+      
+        System.out.println("The poped element is:"+stack[top]);
+      
+        top=top-1;
+      
+      }
+      
+      catch(ArrayIndexOutOfBoundsException e)
+      
+      {
+      
+        System.out.println("\nStack is empty!"+e);
+      
+      }
+    
+    }
+    
+    public void display()
+    
+    {
+    
+      if(top==-1)
+      
+        System.out.println("\nStack is empty!");
+      
+      else
+      
+      {
+      
+        System.out.println("\nStack consist of:");
+      
+        for(i=0;i<=top;i++)
+        
+        {
+        
+          System.out.println("\n"+stack[i]);
+        
+        }
+      
+      }
+      
+    }
+  
+  }
+  
+  class StackADT
+  
+  {
+  
+    public static void main(String args[])
+    
+    {
+    
+      int ch;
+      
+      Scanner sc=new Scanner(System.in);
+      
+      StackArray s=new StackArray();
+      
+      do
+      
+      {
+      
+        System.out.println("\n***********Stack Menu**************");
+        
+        System.out.println("\n1.Push \n2.Pop \n3.Display \n4.Exit");
+        
+        System.out.println("\nEnter the choice");
+        
+        ch=sc.nextInt();
+        
+        switch(ch)
+        
+        {
+        
+          case 1:
+          
+            s.push();
+            
+            s.display();
+            
+            break;
+          
+          case 2:
+          
+            s.pop();
+            
+            s.display();
+            
+            break;
+          
+          case 3:
+          
+            s.display();
+            
+            break;
+          
+          case 4:
+          
+            System.exit(0);
+          
+          }
+          
+      }while(ch<=4);
+      
+    }
+
+}
+
