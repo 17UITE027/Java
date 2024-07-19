@@ -1,0 +1,409 @@
+Converter
+
+import java.util.*;
+
+import con.*;
+
+class con
+
+{
+
+public static void main(String args[])
+
+{
+
+int ch,ch1,ch2;
+
+Scanner sc=new Scanner(System.in);
+
+CurrencyConverter c= new CurrencyConverter();
+
+DisConverter d= new DisConverter();
+
+TimeConvertor t=new TimeConvertor();
+
+do
+
+{
+
+System.out.println("1.Currency Converter");
+
+System.out.println("\n2.Distance Converter");
+
+System.out.println("\n3.Time Converter");
+
+System.out.println("\nEnter the choice:");
+
+ch=sc.nextInt();
+
+switch(ch)
+
+{
+
+case 1:
+
+do
+
+{
+
+System.out.println("1.Dollar to INR\n2.Euro to INR\n3.Yen to INR\n4.INR to Dollar\n5.INR to Euro\n6.INR to Yen");
+
+System.out.println("Enter the choice:");
+
+ch1=sc.nextInt();
+
+switch(ch1)
+
+{
+
+case 1:
+
+float a;
+
+System.out.println("\nEnter the Dollar:");
+
+a=sc.nextFloat();
+
+c.dtinr(a);
+
+break;
+
+case 2:
+
+float b;
+
+System.out.println("\nEnter the Euro:");
+
+b=sc.nextFloat();
+
+c.etinr(b);
+
+break;
+
+case 3:
+
+float v;
+
+System.out.println("\nEnter the Yen:");
+
+v=sc.nextFloat();
+
+c.ytinr(v);
+
+break;
+
+case 4:
+
+float m;
+
+System.out.println("\nEnter the Indian Rupee:");
+
+m=sc.nextFloat();
+
+c.inrtd(m);
+
+break;
+
+case 5:
+
+float l;
+
+System.out.println("\nEnter the Indian Rupee:");
+
+l=sc.nextFloat();
+
+c.inrte(l);
+
+break;
+
+case 6:
+
+float q;
+
+System.out.println("\nEnter the Dollar:");
+
+q=sc.nextFloat();
+
+c.inrty(q);
+
+break;
+
+}}while(ch1<=6);
+
+break;
+
+case 2:
+
+do
+
+{
+
+System.out.println("1.Meter to Kilometer\n2.Kilometer to Meter\n3.Kilometer to Mile\n4.Mile to Kilometer\n");
+
+System.out.println("Enter the choice:");
+
+ch2=sc.nextInt();
+
+switch(ch2)
+
+{
+
+case 1:
+
+float w;
+
+System.out.println("\nEnter the Meter:");
+
+w=sc.nextFloat();
+
+d.mtokm(w);
+
+break;
+
+case 2:
+
+float s;
+
+System.out.println("\nEnter the Kilometer:");
+
+s=sc.nextFloat();
+
+d.kmtm(s);
+
+break;
+
+case 3:
+
+float x;
+
+System.out.println("\nEnter the Kilometer:");
+
+x=sc.nextFloat();
+
+d.kmtmi(x);
+
+break;
+
+case 4:
+
+float g;
+
+System.out.println("\nEnter the Miles:");
+
+g=sc.nextFloat();
+
+d.mitkm(g);
+
+break;
+
+}}while(ch2<=4);
+
+break;
+
+case 3:
+
+t.get();
+
+t.ct();
+
+t.dis();
+
+break;
+
+}}while(ch<=3);
+
+}
+
+}
+
+Currency converter
+
+import java.util.*;
+
+class CurrencyConverter
+
+{
+
+void dtinr(float d)
+
+{
+
+System.out.println("Indian Rupee is :"+d*68.01);
+
+}
+
+void etinr(float d)
+
+{
+
+System.out.println("\nIndian Rupee is :"+d*80.31);
+
+}
+
+void ytinr(float d)
+
+{
+
+System.out.println("\nIndian Rupee is :"+d*0.61);
+
+}
+
+void inrtd(float d)
+
+{
+
+System.out.println("\nDollar is :"+d/68.01);
+
+}
+
+void inrte(float d)
+
+{
+
+System.out.println("\nEuro is :"+d/80.31);
+
+}
+
+void inrty(float d)
+
+{
+
+System.out.println("\nDollar is :"+d/0.61);
+
+}
+
+}
+
+Distance converter
+
+import java.util.*;
+
+class DisConverter
+
+{
+
+void mtokm(float d)
+
+{
+
+System.out.println("kilometer is :"+d*0.001);
+
+}
+
+void kmtm(float d)
+
+{
+
+System.out.println("\nmeter is :"+d*1000);
+
+}
+
+void kmtmi(float d)
+
+{
+
+System.out.println("\nmiles is :"+d*0.621);
+
+}
+
+void mitkm(float d)
+
+{
+
+System.out.println("\nkilometer is :"+d*1.609);
+
+}
+
+}
+
+Time converter
+
+import java.util.*;
+
+class TimeConvertor
+
+{
+
+Scanner sc=new Scanner (System.in);
+
+int h,m,s,d;
+
+void get()
+
+{
+
+System.out.println("Enter the hours:");
+
+h=sc.nextInt();
+
+System.out.println("Enter the minutes:");
+
+m=sc.nextInt();
+
+System.out.println("Enter the seconds:");
+
+s=sc.nextInt();
+
+}
+
+void ct()
+
+{
+
+while(s>=60)
+
+{
+
+m=m+1;
+
+s=s-60;
+
+}
+
+while(m>=60)
+
+{
+
+h=h+1;
+
+m=m-60;
+
+}
+
+while(h>=24)
+
+{
+
+d=d+1;
+
+h=h-24;
+
+}
+
+}
+
+void dis()
+
+{
+
+System.out.println(d+"DAY- "+h+":"+m+":"+s+"[24hr format]");
+
+if(h<12)
+
+{
+
+System.out.println(d+"DAY- "+h+":"+m+":"+s+"AM [12hr format]");
+
+}
+
+else
+
+{
+
+System.out.println(d+"DAY- "+(h-12)+":"+m+":"+s+"PM [12hr format]");
+
+}
+
+}
+
+}
