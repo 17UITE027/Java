@@ -1,0 +1,84 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+public class serverd
+{
+	public static void main(String args[])throws IOException
+	{
+
+		try
+		{
+		DatagramSocket dss=new DatagramSocket(10027);
+			int i,flag=0;
+			String ip1;
+			String[] dn={"www.google.com","www.w3school.com"};
+			String[] ip={"192.168.2.2","192.168.2.1"};
+			InetAddress ina=InetAddress.getByName("127.0.0.1");	
+			byte[] data=new byte[1024];
+			String fromc=" ";
+			DatagramPacket dps=new DatagramPacket(data,data.length);
+			dss.receive(dps);
+			fromc=new String(dps.getData());
+
+			ip1=fromc.trim();
+
+			for(i=0;i<dn.length;i++)
+			{
+				if(ip1.equals(dn[i]))
+				{
+
+					data=ip[i].getBytes();
+					DatagramPacket dp=new DatagramPacket(data,data.length,ina,10027);
+					dss.send(dp);
+					flag=1;
+					break;
+				}
+			}
+			if(flag==0)
+			{
+				System.out.println("Domain name is not present");
+			}
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Port not available"+e);
+		}
+	}
+}
+
+
+Client
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+class clientd
+{
+	public static void main(String args[])throws IOException
+	{
+
+		try
+		{
+			DatagramSocket ds=new DatagramSocket();
+			InetAddress ina=InetAddress.getByName("127.0.0.1");
+			byte[] data=new byte[1024];
+           		Scanner sc=new Scanner(System.in);
+			System.out.println("Enter the domain name:");
+			String dn=sc.next();
+			data=dn.getBytes();
+			DatagramPacket dp=new DatagramPacket(data,data.length,ina,10027);
+			ds.send(dp);
+			byte[] dat=new byte[1024];
+			String fromc=" ";
+			DatagramPacket dps=new DatagramPacket(dat,dat.length);
+			ds.receive(dps);
+			fromc=new String(dps.getData());
+			System.out.println(" "+fromc.trim());
+		}
+		catch(Exception e)
+		{
+			System.out.println("Port not available "+e);
+		}
+	}
+}
