@@ -1,0 +1,337 @@
+import java.util.*;
+
+import java.io.*;
+
+class Employee
+
+{
+
+  String Emp_name;
+  
+  String Emp_id;
+  
+  String Address;
+  
+  String Mail_id;
+  
+  String Mobile_no;
+  
+  double DA;
+  
+  double HRA;
+  
+  double PF;
+  
+  double SCF;
+  
+  double netSalary;
+  
+  double grossSalary;
+  
+  Scanner sc=new Scanner(System.in);
+  
+  void readEmployee()
+  
+  {
+  
+    System.out.println("Enter employee name:");
+    
+    Emp_name=sc.nextLine();
+    
+    System.out.println("Enter employee ID:");
+    
+    Emp_id=sc.nextLine();
+    
+    System.out.println("Enter employee Address:");
+    
+    Address=sc.nextLine();
+    
+    System.out.println("Enter employee Mail ID:");
+    
+    Mail_id=sc.nextLine();
+    
+    System.out.println("Enter employee mobil number:");
+    
+    Mobile_no=sc.next();
+  
+  }
+  
+  void displayEmployee()
+  
+  {
+  
+    System.out.println("\n==================================================================");
+    
+    System.out.println("\nKamaraj College of Engineering And Technology");
+    
+    System.out.println("\n==================================================================");
+    
+    System.out.println("\nEmployee name:"+Emp_name);
+    
+    System.out.println("\nEmployee ID:"+Emp_id);
+    
+    System.out.println("\nEmployee Address:"+Address);
+    
+    System.out.println("\nEmployee Mail Id:"+Mail_id);
+    
+    System.out.println("\nEmployee mobile number:"+Mobile_no);
+    
+    System.out.println("\n================================================================");
+  
+  }
+  
+  void paySlipcalc(double bp)
+  
+  {
+  
+    DA= bp*97/100;
+    
+    System.out.println("\nDA:"+DA);
+    
+    HRA=bp*10/100;
+    
+    System.out.println("\nHRA:"+HRA);
+    
+    PF=bp*12/100;
+    
+    System.out.println("\nPF:"+PF);
+    
+    SCF=bp*0.1/100;
+    
+    System.out.println("\nSCF:"+SCF);
+    
+    grossSalary=bp+DA+HRA+PF+SCF;
+    
+    System.out.println("\nGrossSalary:"+grossSalary);
+    
+    netSalary=bp+DA+HRA;
+    
+    System.out.println("\nNetSalary:"+netSalary);
+  
+  }
+  
+  }
+  
+  class Programmer extends Employee
+  
+  {
+  
+    void readProgrammer()
+    
+    {
+    
+      this.readEmployee();
+      
+      double basicPay;
+      
+      System.out.println("\nEnter BasicPay:");
+      
+      basicPay=sc.nextDouble();
+      
+      if(basicPay>=20000)
+      
+      {
+      
+        this.displayEmployee();
+        
+        this.paySlipcalc(basicPay);
+      
+      }
+      
+      else
+      
+      {
+      
+        System.out.println("Programmers basicpay should be 20000 and above");
+      
+      }
+      
+      }
+    
+    }
+    
+    class AsstProf extends Employee
+    
+    {
+    
+      void readAsstProf()
+      
+      {
+      
+        this.readEmployee();
+        
+        double basicPay;
+        
+        System.out.println("\nEnter BasicPay:");
+        
+        basicPay=sc.nextDouble();
+        
+        if(basicPay>=40000)
+        
+        {
+        
+          this.paySlipcalc(basicPay);
+        
+        }
+        
+        else
+        
+        {
+        
+          System.out.println("Assistnt professor's basicpay should be 20000 and above");
+        
+        }
+        
+      }
+    
+    }
+    
+    class AssoProf extends Employee
+    
+    {
+    
+      void readAssoProf()
+      
+      {
+      
+      this.readEmployee();
+      
+      double basicPay;
+      
+      System.out.println("\nEnter BasicPay:");
+      
+      Scanner sc=new Scanner(System.in);
+      
+      basicPay=sc.nextDouble();
+      
+      if(basicPay>=60000)
+      
+      {
+      
+        this.paySlipcalc(basicPay);
+      
+      }
+      
+      else
+      
+      {
+      
+        System.out.println("Associate professor's basicpay should be 20000 and above");
+      
+      }
+      
+      }
+      
+    }
+    
+    class Professor extends Employee
+    
+    {
+    
+      void readProfessor()
+      
+      {
+      
+        this.readEmployee();
+        
+        double basicPay;
+        
+        System.out.println("\nEnter BasicPay:");
+        
+        Scanner sc=new Scanner(System.in);
+        
+        basicPay=sc.nextDouble();
+        
+        if(basicPay>=20000)
+        
+        {
+        
+          this.paySlipcalc(basicPay);
+        
+        }
+        
+        else
+        
+        {
+        
+          System.out.println("Professor's basicpay should be 20000 and above");
+        
+        }
+      
+      }
+      
+    }
+    
+    class Payroll
+    
+    {
+    
+      public static void main(String args[])
+      
+      {
+      
+        Programmer p=new Programmer();
+        
+        AsstProf a=new AsstProf();
+        
+        AssoProf ap=new AssoProf();
+        
+        Professor prof=new Professor();
+        
+        int ch;
+        
+        do
+        
+        {
+        
+          System.out.println("\n-----------PaySlip calculation---------------");
+          
+          System.out.println("\n1.Programmer");
+          
+          System.out.println("\n2.Assistant Professor");
+          
+          System.out.println("\n3.Associate Professor");
+          
+          System.out.println("\n4.Professor");
+          
+          System.out.println("\nEnter Your Choice:");
+          
+          Scanner sc=new Scanner(System.in);
+          
+          ch=sc.nextInt();
+          
+          switch(ch)
+          
+          {
+          
+          case 1:
+          
+            p.readProgrammer();
+            
+            break;
+          
+          case 2:
+          
+            a.readAsstProf();
+            
+            break;
+          
+          case 3:
+          
+            ap.readAssoProf();
+            
+            break;
+          
+          case 4:
+          
+            prof.readProfessor();
+            
+            break;
+            
+          }
+          
+        }while(ch<=4);
+      
+  }
+
+}
