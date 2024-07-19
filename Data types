@@ -1,0 +1,45 @@
+import java.util.*;
+
+import java.lang.*;
+
+class main
+
+{
+
+public static <T extends Comparable <T>>T max(T...element)
+
+{
+
+T max=element[0];
+
+for(T e:element)
+
+{
+
+if(e.compareTo(max)> 0)
+
+max=e;
+
+}
+
+return max;
+
+}
+
+public static void main(String args[])
+
+{
+
+System.out.println("Integer max:"+max(Integer.valueOf(2),Integer.valueOf(20),Integer.valueOf(120)));
+
+System.out.println("Double max:"+max(Double.valueOf(2.9),Double.valueOf(20.7),Double.valueOf(120.8)));
+
+System.out.println("String max:"+max("Mala","Sona","Rathi"));
+
+System.out.println("Boolean max:"+max(Boolean.TRUE,Boolean.FALSE));
+
+System.out.println("Byte max:"+max(Byte.MAX_VALUE,Byte.MIN_VALUE));
+
+}
+
+}
