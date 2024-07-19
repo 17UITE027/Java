@@ -1,0 +1,146 @@
+import java.util.*;
+
+class DynamicArray
+
+{
+
+  public static void main(String args[])
+  
+  {
+  
+    Scanner sc=new Scanner(System.in);
+    
+    ArrayList <String> obj=new ArrayList <String>();
+    
+    int ch,i;
+    
+    String name,letter;
+    
+    int index;
+    
+    do
+    
+    {
+    
+      System.out.println("\n==================Menu=======================");
+      
+      System.out.println("\n1.Append");
+      
+      System.out.println("\n2.Insert at any position");
+      
+      System.out.println("\n3.Search");
+      
+      System.out.println("\n4.List all string starts with given letter");
+      
+      System.out.println("\n5.Display");
+      
+      System.out.println("\n6.Delete");
+      
+      System.out.println("\n==============================================");
+      
+      System.out.println("\nEnter your choice:");
+      
+      ch=sc.nextInt();
+      
+      switch(ch)
+      
+      {
+      
+        case 1:
+        
+          System.out.println("\nEnter the string to append:");
+          
+          sc.nextLine();
+          
+          name=sc.nextLine();
+          
+          obj.add(name);
+          
+          break;
+        
+        case 2:
+        
+          System.out.println("\nEnter the string to insert:");
+          
+          sc.nextLine();
+          
+          name=sc.nextLine();
+          
+          System.out.println("\nEnter the position to insert:");
+          
+          index=sc.nextInt();
+          
+          if(index<=obj.size())
+          
+          {
+          
+            obj.add(index,name);
+          
+          }
+          
+          else
+          
+            System.out.println("Invalid index:Index should be within the Arraay List size");
+          
+          break;
+        
+        case 3:
+        
+          System.out.println("\nEnter the string to insert:");
+          
+          name=sc.next();
+          
+          if(obj.contains(name))
+          
+            System.out.println(name+" is found in the list");
+          
+          else
+          
+            System.out.println(name+ " is not found in the list");
+          
+          break;
+        
+        case 4:
+        
+          System.out.println("\nEnter the first letter of a string:");
+          
+          letter=sc.next();
+          
+          for(i=0;i<obj.size();i++)
+          
+          {
+          
+            if(obj.get(i).startsWith(letter))
+            
+            System.out.println(obj.get(i));
+          
+          }
+          
+          break;
+        
+        case 5:
+        
+          System.out.println("Currently the array list has the following strings:"+obj);
+          
+          break;
+        
+        case 6:
+        
+          System.out.println("\nEnter the position to delete:");
+          
+          index=sc.nextInt();
+          
+          if(index<obj.size())
+          
+          obj.remove(index);
+          
+          break;
+      
+      }
+      
+    }while(ch<=6);
+    
+  }
+
+}
+
