@@ -1,0 +1,45 @@
+import java.io.*;
+
+import java.net.*;
+
+class server
+
+{
+
+public static void main(String args[]) throws IOException
+
+{
+
+try
+
+{
+
+ServerSocket ss=new ServerSocket(10005);
+
+Socket s=ss.accept();
+
+DataInputStream dis=new DataInputStream(s.getInputStream());
+
+String input=(String)dis.readUTF();
+
+DataOutputStream dos=new DataOutputStream(s.getOutputStream());
+
+dos.writeUTF(input);
+
+ss.close();
+
+s.close();
+
+}
+
+catch(Exception e)
+
+{
+
+System.out.println("Not Connected");
+
+}
+
+}
+
+}
